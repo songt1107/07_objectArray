@@ -60,7 +60,7 @@ public class MemberService {
 						}
 						
 						break;
-					case 5:  break;
+					case 5: searchRegion(); break;
 					case 0 : System.out.println("프로그램 종료"); break;
 					default : System.out.println("잘못 입력하셨습니다.. 다시 입력해주세요");
 					
@@ -212,6 +212,41 @@ public class MemberService {
 		} else {
 			return 0;
 		}
+	}
+	
+	
+	// 회원 검색(지역) 메서드
+	public void searchRegion() {
+		
+		System.out.println("\n******회원 검색(지역)******");
+		
+		System.out.print("검색할 지역을 입력하세요 : ");
+		String inputRegion = sc.next();
+		
+		boolean flag = false; // 검색 결과 신호용 변수
+		
+		// 1) memberArr 배열의 모든 요소 순차 접근
+		for(int i = 0; i < memberArr.length; i++) {
+			
+			// 2) memberArr[i] 요소가 null인 경우 반복 종료
+			if(memberArr[i] == null) {
+				break;
+			}
+			
+			// 3) memberArr[i] 요소에 저장된 지역(region)이
+			// 	  입력받은 지역(inputRegion)과 같을 경우 회원의 아이디, 이름을 출력
+			if(memberArr[i].getRegion().equals(inputRegion)) {
+				System.out.printf("아이디 : %s, 이름 : %s\n",
+								memberArr[i].getMemberId(), memberArr[i].getMemberName());
+				
+				flag = true;
+			}
+		}
+		
+		if(!flag) {
+			System.out.println("일치하는 검색 결과 없음");
+		}
+		
 	}
 	
 }
