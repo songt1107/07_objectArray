@@ -10,6 +10,5 @@ public class MemberRun {
 		ms.displayMenu();
 		
 		
-		
 	}
 }
